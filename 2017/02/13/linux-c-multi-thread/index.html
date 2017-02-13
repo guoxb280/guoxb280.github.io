@@ -3,17 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>guoxb&#39;s blog</title>
+  <title>linux-c-multi-thread | guoxb&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="guoxb&apos;s blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="guoxb's blog">
-<meta property="og:url" content="https://guoxb280.github.io/index.html">
+  <meta name="description" content="linux-c-multi-thread进程和线程http://www.cnblogs.com/kuliuheng/p/4062941.htmllinux中没有线程，通过fork,vfork和clone创建子进程。
+同步机制信号量：被阻塞后睡眠。互斥锁：被阻塞后睡眠。
+自旋锁：全部互斥。被阻塞后不睡眠，而是不断检查。读写锁：读操作不会阻塞读操作。被阻塞后不睡眠，而是不断检查。顺序锁：读操作不会阻塞">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux-c-multi-thread">
+<meta property="og:url" content="https://guoxb280.github.io/2017/02/13/linux-c-multi-thread/index.html">
 <meta property="og:site_name" content="guoxb's blog">
-<meta property="og:description" content="guoxb&apos;s blog">
+<meta property="og:description" content="linux-c-multi-thread进程和线程http://www.cnblogs.com/kuliuheng/p/4062941.htmllinux中没有线程，通过fork,vfork和clone创建子进程。
+同步机制信号量：被阻塞后睡眠。互斥锁：被阻塞后睡眠。
+自旋锁：全部互斥。被阻塞后不睡眠，而是不断检查。读写锁：读操作不会阻塞读操作。被阻塞后不睡眠，而是不断检查。顺序锁：读操作不会阻塞">
+<meta property="og:updated_time" content="2017-02-13T02:53:38.743Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="guoxb's blog">
-<meta name="twitter:description" content="guoxb&apos;s blog">
+<meta name="twitter:title" content="linux-c-multi-thread">
+<meta name="twitter:description" content="linux-c-multi-thread进程和线程http://www.cnblogs.com/kuliuheng/p/4062941.htmllinux中没有线程，通过fork,vfork和clone创建子进程。
+同步机制信号量：被阻塞后睡眠。互斥锁：被阻塞后睡眠。
+自旋锁：全部互斥。被阻塞后不睡眠，而是不断检查。读写锁：读操作不会阻塞读操作。被阻塞后不睡眠，而是不断检查。顺序锁：读操作不会阻塞">
   
     <link rel="alternate" href="/atom.xml" title="guoxb&#39;s blog" type="application/atom+xml">
   
@@ -62,9 +69,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-linux-c-multi-thread" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-linux-c-multi-thread" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/02/13/linux-c-multi-thread/" class="article-date">
   <time datetime="2017-02-13T02:50:00.000Z" itemprop="datePublished">2017-02-13</time>
@@ -81,8 +86,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/13/linux-c-multi-thread/">linux-c-multi-thread</a>
+    <h1 class="article-title" itemprop="name">
+      linux-c-multi-thread
     </h1>
   
 
@@ -129,169 +134,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-xxnet-use" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/09/xxnet-use/" class="article-date">
-  <time datetime="2017-02-09T02:31:13.000Z" itemprop="datePublished">2017-02-09</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/install/">install</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/09/xxnet-use/">xxnet use</a>
-    </h1>
+    <a href="/2017/02/09/xxnet-use/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">xxnet use</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>翻墙工具:XX-Net<br><a href="https://github.com/XX-net/XX-Net" target="_blank" rel="external">https://github.com/XX-net/XX-Net</a></p>
-<h2 id="install"><a href="#install" class="headerlink" title="install"></a>install</h2><p><a href="https://github.com/XX-net/XX-Net/wiki/How-to-use" target="_blank" rel="external">https://github.com/XX-net/XX-Net/wiki/How-to-use</a></p>
-<ul>
-<li>准备windows, chrome, xx-net</li>
-<li>安装chrome,xx-net</li>
-<li>安装chrome插件SwichySharp:<a href="https://github.com/XX-net/XX-Net/wiki/使用Chrome浏览器" target="_blank" rel="external">https://github.com/XX-net/XX-Net/wiki/使用Chrome浏览器</a></li>
-<li>创建和使用自己的appid:<a href="https://github.com/XX-net/XX-Net/wiki/how-to-create-my-appids" target="_blank" rel="external">https://github.com/XX-net/XX-Net/wiki/how-to-create-my-appids</a></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://guoxb280.github.io/2017/02/09/xxnet-use/" data-id="ciz3i6pev0004j8w45jawfayz" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xxnet/">xxnet</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-hexo-for-gitblog" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/01/19/hexo-for-gitblog/" class="article-date">
-  <time datetime="2017-01-19T06:21:13.000Z" itemprop="datePublished">2017-01-19</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/install/">install</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/19/hexo-for-gitblog/">hexo for gitblog</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="install"><a href="#install" class="headerlink" title="install"></a>install</h2><ul>
-<li>install git, Node.js</li>
-<li>install hexo</li>
-<li>config _config.yml<ul>
-<li>Site</li>
-<li>Deployment</li>
-</ul>
-</li>
-<li>usage<ul>
-<li>hexo init ./blog</li>
-<li>hexo new [post] “name”</li>
-<li>hexo g</li>
-<li>hexo s -p 5000</li>
-<li>hexo d </li>
-<li>hexo clean </li>
-</ul>
-</li>
-</ul>
-<h2 id="see"><a href="#see" class="headerlink" title="see"></a>see</h2><pre><code>https://hexo.io/zh-cn/docs/deployment.html
-http://opiece.me/2015/04/09/hexo-guide/
-http://blog.csdn.net/u012246342/article/details/51543370
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://guoxb280.github.io/2017/01/19/hexo-for-gitblog/" data-id="ciz3i6pep0001j8w4rq5s3z5e" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gitblog/">gitblog</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/01/19/hello-world/" class="article-date">
-  <time datetime="2017-01-19T02:39:45.771Z" itemprop="datePublished">2017-01-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/19/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-<p>add by guoxb 2017年1月19日</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://guoxb280.github.io/2017/01/19/hello-world/" data-id="ciz3i6pey0005j8w4m5rpoqku" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 </section>
         
