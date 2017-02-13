@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>learn-gcc-and-makefile | guoxb&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="learn-gcc-and-makefilegcc 4个步骤http://www.cnblogs.com/hqu-ye/articles/3655922.html
+
+预处理:宏替换，分析头文件gcc -E test.c -o test.i
+编译:词法分析、语法分析、语义分析、检查语法错误，编译产生汇编文件gcc -S test.i -o test.s
+汇编:汇编产生二进制目标文件gcc -c te">
+<meta property="og:type" content="article">
+<meta property="og:title" content="learn-gcc-and-makefile">
+<meta property="og:url" content="https://guoxb280.github.io/2017/02/13/learn-gcc-and-makefile/index.html">
+<meta property="og:site_name" content="guoxb's blog">
+<meta property="og:description" content="learn-gcc-and-makefilegcc 4个步骤http://www.cnblogs.com/hqu-ye/articles/3655922.html
+
+预处理:宏替换，分析头文件gcc -E test.c -o test.i
+编译:词法分析、语法分析、语义分析、检查语法错误，编译产生汇编文件gcc -S test.i -o test.s
+汇编:汇编产生二进制目标文件gcc -c te">
+<meta property="og:updated_time" content="2017-02-13T13:55:27.591Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="learn-gcc-and-makefile">
+<meta name="twitter:description" content="learn-gcc-and-makefilegcc 4个步骤http://www.cnblogs.com/hqu-ye/articles/3655922.html
+
+预处理:宏替换，分析头文件gcc -E test.c -o test.i
+编译:词法分析、语法分析、语义分析、检查语法错误，编译产生汇编文件gcc -S test.i -o test.s
+汇编:汇编产生二进制目标文件gcc -c te">
+  
+    <link rel="alternate" href="/atom.xml" title="guoxb&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">guoxb&#39;s blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://guoxb280.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-learn-gcc-and-makefile" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/13/learn-gcc-and-makefile/" class="article-date">
+  <time datetime="2017-02-13T13:50:00.000Z" itemprop="datePublished">2017-02-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/linux/">linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      learn-gcc-and-makefile
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="learn-gcc-and-makefile"><a href="#learn-gcc-and-makefile" class="headerlink" title="learn-gcc-and-makefile"></a>learn-gcc-and-makefile</h2><h2 id="gcc-4个步骤"><a href="#gcc-4个步骤" class="headerlink" title="gcc 4个步骤"></a>gcc 4个步骤</h2><p><a href="http://www.cnblogs.com/hqu-ye/articles/3655922.html" target="_blank" rel="external">http://www.cnblogs.com/hqu-ye/articles/3655922.html</a></p>
+<ol>
+<li>预处理:宏替换，分析头文件<br>gcc -E test.c -o test.i</li>
+<li>编译:词法分析、语法分析、语义分析、检查语法错误，编译产生汇编文件<br>gcc -S test.i -o test.s</li>
+<li>汇编:汇编产生二进制目标文件<br>gcc -c test.s -o test.o</li>
+<li><strong>链接</strong>:将目标文件和其它附加文件如链接库文件等链接起来，产生可执行文件<br>gcc test.o -o test</li>
+</ol>
+<h2 id="不同的后缀文件"><a href="#不同的后缀文件" class="headerlink" title="不同的后缀文件"></a>不同的后缀文件</h2><p>.h是头文件,.c是C文件,.cc是C++文件,.i预处理后的C文件,.ii预处理后的C++文件,.s汇编文件,.o目标文件,.a库文件</p>
+<h2 id="gcc-v-s-g"><a href="#gcc-v-s-g" class="headerlink" title="gcc v.s. g++"></a>gcc v.s. g++</h2><p><a href="http://www.cnblogs.com/zhangsir6/articles/2956798.html" target="_blank" rel="external">http://www.cnblogs.com/zhangsir6/articles/2956798.html</a><br><a href="http://stackoverflow.com/questions/172587/what-is-the-difference-between-g-and-gcc/172592#172592" target="_blank" rel="external">http://stackoverflow.com/questions/172587/what-is-the-difference-between-g-and-gcc/172592#172592</a><br>g++ is equivalent to gcc -xc++ -lstdc++ -shared-libgcc (the 1st is a compiler option, the 2nd two are linker options). This can be checked by running both with the -v option (it displays the backend toolchain commands being run).<br>一般来说c程序用gcc，c++程序用g++</p>
+<ul>
+<li>.c:gcc看做c程序，g++看做c++程序; .cpp:都看做c++程序</li>
+<li>对语法要求有区别，C++语法更加严格</li>
+<li>gcc不能自动和C++程序使用的库联接；可使用gcc -lstdc++</li>
+</ul>
+<h2 id="gcc各种参数"><a href="#gcc各种参数" class="headerlink" title="gcc各种参数"></a>gcc各种参数</h2><p><a href="http://www.cnblogs.com/xmphoenix/archive/2011/03/21/1989944.html" target="_blank" rel="external">http://www.cnblogs.com/xmphoenix/archive/2011/03/21/1989944.html</a></p>
+<ul>
+<li>-L/root/mypath 在/root/mypath下查找库文件</li>
+<li>-lname 链接libname.a库文件</li>
+<li>-I/root/mypath 在/root/mypath下查找头文件</li>
+<li>-Wall 显示所有警告信息(warning all)</li>
+<li>-Werror，它要求GCC将所有的警告当成错误进行处理 </li>
+<li>-pedantic以ANSI/ISO C标准列出的所有警告 当GCC在编译不符合ANSI/ISO C语言标准的源代码时，如果在编译指令中加上了-pedantic选项，那么源程序中使用了扩展语法的地方将产生相应的警告信息。</li>
+<li>-fpermissive 不提倡。使用宽松的语法。</li>
+<li>-shared 此选项将尽量使用动态库，所以生成文件比较小，不过需要系统由动态库.</li>
+<li>-static 此选项将禁止使用动态库，所以，编译出来的东西，一般都非常大，也不必什么动态连接库，就能运行。gcc优先使用动态库</li>
+<li>-g选项，产生供gdb调试用的可执行文件：gcc -g helloworld.c</li>
+<li>-O0, O1, O2, O3优化选项</li>
+<li>-x language filename 设定文件所使用的语言,使后缀名无效如-xc++</li>
+<li>-fPIC (64位系统必须) 作用于编译阶段，在编译动态库时(.so文件)告诉编译器产生与位置无关代码(Position-IndependentCode)，若未指定-fPIC选项编译.so文件，则在加载动态库时需进行重定向</li>
+<li>-ansi，支持ISO C89 programs.</li>
+<li>-E,-S,-c,-o</li>
+<li>-pthread 通过pthreads库加入对多线程的支持</li>
+<li>–lmysqlclient 链接mysql库</li>
+</ul>
+<h2 id="include-lt-gt-和-“”"><a href="#include-lt-gt-和-“”" class="headerlink" title="include &lt;&gt; 和 “”"></a>include &lt;&gt; 和 “”</h2><ul>
+<li>include&lt;&gt; 引用编译器类库路径里面的头文件或者说是系统默认搜索路径下的头文件</li>
+<li>include”” 先到制定目录下查找，然后再到系统默认路基查找<h3 id="头文件查找顺序"><a href="#头文件查找顺序" class="headerlink" title="头文件查找顺序"></a>头文件查找顺序</h3></li>
+<li>先按照 include “”指定路径查找</li>
+<li>在-I选项指定路径下查找</li>
+<li>环境变量指定路径下查找</li>
+<li>在系统默认搜索路径下查找<h3 id="库文件查找顺序"><a href="#库文件查找顺序" class="headerlink" title="库文件查找顺序"></a>库文件查找顺序</h3><a href="http://blog.chinaunix.net/xmlrpc.php?r=blog/article&amp;uid=11829250&amp;id=5750589" target="_blank" rel="external">http://blog.chinaunix.net/xmlrpc.php?r=blog/article&amp;uid=11829250&amp;id=5750589</a></li>
+<li>在-L选项指定的路径下查找</li>
+<li>环境变量指定路径下查找</li>
+<li>/etc/ld.so.conf中指定的路径下查找</li>
+<li>默认路径下查找<h3 id="查看默认路径"><a href="#查看默认路径" class="headerlink" title="查看默认路径"></a>查看默认路径</h3><code>gcc -print-prog-name=cc1plus</code> -v<br><code>g++ -print-prog-name=cc1plus</code> -v<h3 id="修改系统默认搜索路径"><a href="#修改系统默认搜索路径" class="headerlink" title="修改系统默认搜索路径"></a>修改系统默认搜索路径</h3><a href="http://blog.csdn.net/cupidove/article/details/37041719" target="_blank" rel="external">http://blog.csdn.net/cupidove/article/details/37041719</a><br><a href="http://www.360doc.com/content/13/0913/17/13084517_314232284.shtml" target="_blank" rel="external">http://www.360doc.com/content/13/0913/17/13084517_314232284.shtml</a><br>修改环境变量C_INCLUDE_PATH,CPLUS_INCLUDE_PATH添加路径<br>查看环境变量echo $C_INCLUDE_PATH</li>
+</ul>
+<h2 id="makefile语法规则"><a href="#makefile语法规则" class="headerlink" title="makefile语法规则"></a>makefile语法规则</h2><p><a href="http://blog.csdn.net/haoel/article/details/2887" target="_blank" rel="external">http://blog.csdn.net/haoel/article/details/2887</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://guoxb280.github.io/2017/02/13/learn-gcc-and-makefile/" data-id="ciz45u71x00039gw4kvdfckvu" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/makefile/">makefile</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/02/13/basic-technology-for-interview/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">basic-technology-for-interview</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/install/">install</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/gitblog/">gitblog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/makefile/">makefile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/thread/">thread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xxnet/">xxnet</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/gitblog/" style="font-size: 10px;">gitblog</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/makefile/" style="font-size: 10px;">makefile</a> <a href="/tags/thread/" style="font-size: 10px;">thread</a> <a href="/tags/xxnet/" style="font-size: 10px;">xxnet</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/02/13/learn-gcc-and-makefile/">learn-gcc-and-makefile</a>
+          </li>
+        
+          <li>
+            <a href="/2017/02/13/basic-technology-for-interview/">basic-technology-for-interview</a>
+          </li>
+        
+          <li>
+            <a href="/2017/02/13/various-technology/">various-technology</a>
+          </li>
+        
+          <li>
+            <a href="/2017/02/13/linux-c-multi-thread/">linux-c-multi-thread</a>
+          </li>
+        
+          <li>
+            <a href="/2017/02/09/xxnet-use/">xxnet use</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 guoxb280<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

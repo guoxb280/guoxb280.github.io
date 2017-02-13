@@ -64,6 +64,95 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-learn-gcc-and-makefile" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/13/learn-gcc-and-makefile/" class="article-date">
+  <time datetime="2017-02-13T13:50:00.000Z" itemprop="datePublished">2017-02-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/linux/">linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/13/learn-gcc-and-makefile/">learn-gcc-and-makefile</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="learn-gcc-and-makefile"><a href="#learn-gcc-and-makefile" class="headerlink" title="learn-gcc-and-makefile"></a>learn-gcc-and-makefile</h2><h2 id="gcc-4个步骤"><a href="#gcc-4个步骤" class="headerlink" title="gcc 4个步骤"></a>gcc 4个步骤</h2><p><a href="http://www.cnblogs.com/hqu-ye/articles/3655922.html" target="_blank" rel="external">http://www.cnblogs.com/hqu-ye/articles/3655922.html</a></p>
+<ol>
+<li>预处理:宏替换，分析头文件<br>gcc -E test.c -o test.i</li>
+<li>编译:词法分析、语法分析、语义分析、检查语法错误，编译产生汇编文件<br>gcc -S test.i -o test.s</li>
+<li>汇编:汇编产生二进制目标文件<br>gcc -c test.s -o test.o</li>
+<li><strong>链接</strong>:将目标文件和其它附加文件如链接库文件等链接起来，产生可执行文件<br>gcc test.o -o test</li>
+</ol>
+<h2 id="不同的后缀文件"><a href="#不同的后缀文件" class="headerlink" title="不同的后缀文件"></a>不同的后缀文件</h2><p>.h是头文件,.c是C文件,.cc是C++文件,.i预处理后的C文件,.ii预处理后的C++文件,.s汇编文件,.o目标文件,.a库文件</p>
+<h2 id="gcc-v-s-g"><a href="#gcc-v-s-g" class="headerlink" title="gcc v.s. g++"></a>gcc v.s. g++</h2><p><a href="http://www.cnblogs.com/zhangsir6/articles/2956798.html" target="_blank" rel="external">http://www.cnblogs.com/zhangsir6/articles/2956798.html</a><br><a href="http://stackoverflow.com/questions/172587/what-is-the-difference-between-g-and-gcc/172592#172592" target="_blank" rel="external">http://stackoverflow.com/questions/172587/what-is-the-difference-between-g-and-gcc/172592#172592</a><br>g++ is equivalent to gcc -xc++ -lstdc++ -shared-libgcc (the 1st is a compiler option, the 2nd two are linker options). This can be checked by running both with the -v option (it displays the backend toolchain commands being run).<br>一般来说c程序用gcc，c++程序用g++</p>
+<ul>
+<li>.c:gcc看做c程序，g++看做c++程序; .cpp:都看做c++程序</li>
+<li>对语法要求有区别，C++语法更加严格</li>
+<li>gcc不能自动和C++程序使用的库联接；可使用gcc -lstdc++</li>
+</ul>
+<h2 id="gcc各种参数"><a href="#gcc各种参数" class="headerlink" title="gcc各种参数"></a>gcc各种参数</h2><p><a href="http://www.cnblogs.com/xmphoenix/archive/2011/03/21/1989944.html" target="_blank" rel="external">http://www.cnblogs.com/xmphoenix/archive/2011/03/21/1989944.html</a></p>
+<ul>
+<li>-L/root/mypath 在/root/mypath下查找库文件</li>
+<li>-lname 链接libname.a库文件</li>
+<li>-I/root/mypath 在/root/mypath下查找头文件</li>
+<li>-Wall 显示所有警告信息(warning all)</li>
+<li>-Werror，它要求GCC将所有的警告当成错误进行处理 </li>
+<li>-pedantic以ANSI/ISO C标准列出的所有警告 当GCC在编译不符合ANSI/ISO C语言标准的源代码时，如果在编译指令中加上了-pedantic选项，那么源程序中使用了扩展语法的地方将产生相应的警告信息。</li>
+<li>-fpermissive 不提倡。使用宽松的语法。</li>
+<li>-shared 此选项将尽量使用动态库，所以生成文件比较小，不过需要系统由动态库.</li>
+<li>-static 此选项将禁止使用动态库，所以，编译出来的东西，一般都非常大，也不必什么动态连接库，就能运行。gcc优先使用动态库</li>
+<li>-g选项，产生供gdb调试用的可执行文件：gcc -g helloworld.c</li>
+<li>-O0, O1, O2, O3优化选项</li>
+<li>-x language filename 设定文件所使用的语言,使后缀名无效如-xc++</li>
+<li>-fPIC (64位系统必须) 作用于编译阶段，在编译动态库时(.so文件)告诉编译器产生与位置无关代码(Position-IndependentCode)，若未指定-fPIC选项编译.so文件，则在加载动态库时需进行重定向</li>
+<li>-ansi，支持ISO C89 programs.</li>
+<li>-E,-S,-c,-o</li>
+<li>-pthread 通过pthreads库加入对多线程的支持</li>
+<li>–lmysqlclient 链接mysql库</li>
+</ul>
+<h2 id="include-lt-gt-和-“”"><a href="#include-lt-gt-和-“”" class="headerlink" title="include &lt;&gt; 和 “”"></a>include &lt;&gt; 和 “”</h2><ul>
+<li>include&lt;&gt; 引用编译器类库路径里面的头文件或者说是系统默认搜索路径下的头文件</li>
+<li>include”” 先到制定目录下查找，然后再到系统默认路基查找<h3 id="头文件查找顺序"><a href="#头文件查找顺序" class="headerlink" title="头文件查找顺序"></a>头文件查找顺序</h3></li>
+<li>先按照 include “”指定路径查找</li>
+<li>在-I选项指定路径下查找</li>
+<li>环境变量指定路径下查找</li>
+<li>在系统默认搜索路径下查找<h3 id="库文件查找顺序"><a href="#库文件查找顺序" class="headerlink" title="库文件查找顺序"></a>库文件查找顺序</h3><a href="http://blog.chinaunix.net/xmlrpc.php?r=blog/article&amp;uid=11829250&amp;id=5750589" target="_blank" rel="external">http://blog.chinaunix.net/xmlrpc.php?r=blog/article&amp;uid=11829250&amp;id=5750589</a></li>
+<li>在-L选项指定的路径下查找</li>
+<li>环境变量指定路径下查找</li>
+<li>/etc/ld.so.conf中指定的路径下查找</li>
+<li>默认路径下查找<h3 id="查看默认路径"><a href="#查看默认路径" class="headerlink" title="查看默认路径"></a>查看默认路径</h3><code>gcc -print-prog-name=cc1plus</code> -v<br><code>g++ -print-prog-name=cc1plus</code> -v<h3 id="修改系统默认搜索路径"><a href="#修改系统默认搜索路径" class="headerlink" title="修改系统默认搜索路径"></a>修改系统默认搜索路径</h3><a href="http://blog.csdn.net/cupidove/article/details/37041719" target="_blank" rel="external">http://blog.csdn.net/cupidove/article/details/37041719</a><br><a href="http://www.360doc.com/content/13/0913/17/13084517_314232284.shtml" target="_blank" rel="external">http://www.360doc.com/content/13/0913/17/13084517_314232284.shtml</a><br>修改环境变量C_INCLUDE_PATH,CPLUS_INCLUDE_PATH添加路径<br>查看环境变量echo $C_INCLUDE_PATH</li>
+</ul>
+<h2 id="makefile语法规则"><a href="#makefile语法规则" class="headerlink" title="makefile语法规则"></a>makefile语法规则</h2><p><a href="http://blog.csdn.net/haoel/article/details/2887" target="_blank" rel="external">http://blog.csdn.net/haoel/article/details/2887</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://guoxb280.github.io/2017/02/13/learn-gcc-and-makefile/" data-id="ciz45u71x00039gw4kvdfckvu" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/makefile/">makefile</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-basic-technology-for-interview" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/02/13/basic-technology-for-interview/" class="article-date">
@@ -91,7 +180,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://guoxb280.github.io/2017/02/13/basic-technology-for-interview/" data-id="ciz3vmgvs0000dcw409zpxyek" class="article-share-link">Share</a>
+      <a data-url="https://guoxb280.github.io/2017/02/13/basic-technology-for-interview/" data-id="ciz45u71p00019gw4x5ys08ei" class="article-share-link">Share</a>
       
       
     </footer>
@@ -124,6 +213,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="various-technology"><a href="#various-technology" class="headerlink" title="various-technology"></a>various-technology</h2><h2 id="分布式计算系统"><a href="#分布式计算系统" class="headerlink" title="分布式计算系统"></a>分布式计算系统</h2><p>Storm、Spark、Hadoop<br>流计算 离线计算</p>
+<h2 id="数据库系统"><a href="#数据库系统" class="headerlink" title="数据库系统"></a>数据库系统</h2><p>NoSQL，PostgreSQL、MySQL<br>elasticsearch</p>
 <h2 id="消息传递系统-（message-queue）"><a href="#消息传递系统-（message-queue）" class="headerlink" title="消息传递系统 （message queue）"></a>消息传递系统 （message queue）</h2><p>Kafka、RabbitMQ</p>
 <h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>如何发送消息端的负载均衡？<br>如何保证消息被发送到了特定的消息接受者？<br>如何保证消息的完整性？<br>系统的可靠性和可恢复性？<br><strong>如何保证高效率？峰值处理和缓冲？</strong><br><strong>顺序保证</strong><br><strong>支持实时处理和离线处理（异步处理）？</strong></p>
 <h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><ul>
@@ -131,12 +221,11 @@
 <li>RabbitMQ基于AMQP的消息队列实现<br><a href="http://blog.csdn.net/anzhsoft/article/details/19563091" target="_blank" rel="external">http://blog.csdn.net/anzhsoft/article/details/19563091</a></li>
 <li>协议比较amqp v.s. mqtt v.s. stomp v.s. JMS<br><a href="https://blogs.vmware.com/vfabric/2013/02/choosing-your-messaging-protocol-amqp-mqtt-or-stomp.html" target="_blank" rel="external">https://blogs.vmware.com/vfabric/2013/02/choosing-your-messaging-protocol-amqp-mqtt-or-stomp.html</a><br><a href="http://www.uml.org.cn/itnews/2016050908.asp" target="_blank" rel="external">http://www.uml.org.cn/itnews/2016050908.asp</a><br>  amqp: reliability and interoperability<br>  mqtt: used in IoT<br>  JMS: java的消息传递服务</li>
 </ul>
-<h2 id="数据库系统"><a href="#数据库系统" class="headerlink" title="数据库系统"></a>数据库系统</h2><p>NoSQL，PostgreSQL、MySQL<br>elasticsearch</p>
 <h2 id="调度系统-负载均衡系统"><a href="#调度系统-负载均衡系统" class="headerlink" title="调度系统-负载均衡系统"></a>调度系统-负载均衡系统</h2>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://guoxb280.github.io/2017/02/13/various-technology/" data-id="ciz3vmgwe0006dcw47tzyb7pe" class="article-share-link">Share</a>
+      <a data-url="https://guoxb280.github.io/2017/02/13/various-technology/" data-id="ciz45u72b00079gw4x6nh8ooi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -203,7 +292,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://guoxb280.github.io/2017/02/13/linux-c-multi-thread/" data-id="ciz3vmgw20003dcw4vp8zxxfo" class="article-share-link">Share</a>
+      <a data-url="https://guoxb280.github.io/2017/02/13/linux-c-multi-thread/" data-id="ciz45u72600069gw4p2i2ey24" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/thread/">thread</a></li></ul>
@@ -253,7 +342,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://guoxb280.github.io/2017/02/09/xxnet-use/" data-id="ciz3vmgwk0007dcw43sar85w0" class="article-share-link">Share</a>
+      <a data-url="https://guoxb280.github.io/2017/02/09/xxnet-use/" data-id="ciz45u72c00089gw452t45sua" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xxnet/">xxnet</a></li></ul>
@@ -316,7 +405,7 @@ http://blog.csdn.net/u012246342/article/details/51543370
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://guoxb280.github.io/2017/01/19/hexo-for-gitblog/" data-id="ciz3vmgw00002dcw4pbonnp4i" class="article-share-link">Share</a>
+      <a data-url="https://guoxb280.github.io/2017/01/19/hexo-for-gitblog/" data-id="ciz45u71t00029gw4ua27c26v" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gitblog/">gitblog</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
@@ -364,7 +453,7 @@ http://blog.csdn.net/u012246342/article/details/51543370
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://guoxb280.github.io/2017/01/19/hello-world/" data-id="ciz3vmgvx0001dcw4g7fwevg5" class="article-share-link">Share</a>
+      <a data-url="https://guoxb280.github.io/2017/01/19/hello-world/" data-id="ciz45u71l00009gw47a70hz8v" class="article-share-link">Share</a>
       
       
     </footer>
@@ -393,7 +482,7 @@ http://blog.csdn.net/u012246342/article/details/51543370
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/gitblog/">gitblog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/thread/">thread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xxnet/">xxnet</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/gitblog/">gitblog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/makefile/">makefile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/thread/">thread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xxnet/">xxnet</a></li></ul>
     </div>
   </div>
 
@@ -403,7 +492,7 @@ http://blog.csdn.net/u012246342/article/details/51543370
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/gitblog/" style="font-size: 10px;">gitblog</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/thread/" style="font-size: 10px;">thread</a> <a href="/tags/xxnet/" style="font-size: 10px;">xxnet</a>
+      <a href="/tags/gitblog/" style="font-size: 10px;">gitblog</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/makefile/" style="font-size: 10px;">makefile</a> <a href="/tags/thread/" style="font-size: 10px;">thread</a> <a href="/tags/xxnet/" style="font-size: 10px;">xxnet</a>
     </div>
   </div>
 
@@ -425,6 +514,10 @@ http://blog.csdn.net/u012246342/article/details/51543370
       <ul>
         
           <li>
+            <a href="/2017/02/13/learn-gcc-and-makefile/">learn-gcc-and-makefile</a>
+          </li>
+        
+          <li>
             <a href="/2017/02/13/basic-technology-for-interview/">basic-technology-for-interview</a>
           </li>
         
@@ -438,10 +531,6 @@ http://blog.csdn.net/u012246342/article/details/51543370
         
           <li>
             <a href="/2017/02/09/xxnet-use/">xxnet use</a>
-          </li>
-        
-          <li>
-            <a href="/2017/01/19/hexo-for-gitblog/">hexo for gitblog</a>
           </li>
         
       </ul>
