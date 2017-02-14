@@ -17,7 +17,7 @@
 数据库系统NoSQL，PostgreSQL、MySQLelasticsearch
 消息传递系统 （message queue）Kafka、RabbitMQ
 问题如何发送消息端的负载均衡？如何保证消息被发送到了特定的消息接受者？如何保证消息的完整性？系统的可靠性和可恢复性？如何保证高效率？峰值处理">
-<meta property="og:updated_time" content="2017-02-13T10:05:00.665Z">
+<meta property="og:updated_time" content="2017-02-14T08:26:34.950Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="various-technology">
 <meta name="twitter:description" content="various-technology分布式计算系统Storm、Spark、Hadoop流计算 离线计算
@@ -103,13 +103,23 @@
 <li>RabbitMQ基于AMQP的消息队列实现<br><a href="http://blog.csdn.net/anzhsoft/article/details/19563091" target="_blank" rel="external">http://blog.csdn.net/anzhsoft/article/details/19563091</a></li>
 <li>协议比较amqp v.s. mqtt v.s. stomp v.s. JMS<br><a href="https://blogs.vmware.com/vfabric/2013/02/choosing-your-messaging-protocol-amqp-mqtt-or-stomp.html" target="_blank" rel="external">https://blogs.vmware.com/vfabric/2013/02/choosing-your-messaging-protocol-amqp-mqtt-or-stomp.html</a><br><a href="http://www.uml.org.cn/itnews/2016050908.asp" target="_blank" rel="external">http://www.uml.org.cn/itnews/2016050908.asp</a><br>  amqp: reliability and interoperability<br>  mqtt: used in IoT<br>  JMS: java的消息传递服务</li>
 </ul>
-<h2 id="调度系统-负载均衡系统"><a href="#调度系统-负载均衡系统" class="headerlink" title="调度系统-负载均衡系统"></a>调度系统-负载均衡系统</h2>
+<h2 id="调度系统-负载均衡系统"><a href="#调度系统-负载均衡系统" class="headerlink" title="调度系统-负载均衡系统"></a>调度系统-负载均衡系统</h2><h3 id="linux进程调度"><a href="#linux进程调度" class="headerlink" title="linux进程调度"></a>linux进程调度</h3><p><a href="http://www.cnblogs.com/zhaoyl/archive/2012/09/04/2671156.html" target="_blank" rel="external">http://www.cnblogs.com/zhaoyl/archive/2012/09/04/2671156.html</a></p>
+<h3 id="需要考虑的因素"><a href="#需要考虑的因素" class="headerlink" title="需要考虑的因素"></a>需要考虑的因素</h3><ul>
+<li>静态权重不同</li>
+<li>权重的动态调整</li>
+<li>先到先得</li>
+<li>保证公平和避免饥渴</li>
+<li>多处理器下的负载均衡</li>
+</ul>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://guoxb280.github.io/2017/02/13/various-technology/" data-id="ciz45u72b00079gw4x6nh8ooi" class="article-share-link">Share</a>
+      <a data-url="https://guoxb280.github.io/2017/02/13/various-technology/" data-id="ciz5bjdq40008dcw45z53fc43" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/technology/">technology</a></li></ul>
+
     </footer>
   </div>
   
@@ -154,7 +164,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/gitblog/">gitblog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/makefile/">makefile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/thread/">thread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xxnet/">xxnet</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/gitblog/">gitblog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/makefile/">makefile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/source-code/">source-code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/technology/">technology</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/thread/">thread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xxnet/">xxnet</a></li></ul>
     </div>
   </div>
 
@@ -164,7 +174,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/gitblog/" style="font-size: 10px;">gitblog</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/makefile/" style="font-size: 10px;">makefile</a> <a href="/tags/thread/" style="font-size: 10px;">thread</a> <a href="/tags/xxnet/" style="font-size: 10px;">xxnet</a>
+      <a href="/tags/gitblog/" style="font-size: 10px;">gitblog</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/makefile/" style="font-size: 10px;">makefile</a> <a href="/tags/source-code/" style="font-size: 10px;">source-code</a> <a href="/tags/technology/" style="font-size: 10px;">technology</a> <a href="/tags/thread/" style="font-size: 10px;">thread</a> <a href="/tags/xxnet/" style="font-size: 10px;">xxnet</a>
     </div>
   </div>
 
@@ -186,6 +196,10 @@
       <ul>
         
           <li>
+            <a href="/2017/02/14/various-source-code/">various-source-code</a>
+          </li>
+        
+          <li>
             <a href="/2017/02/13/learn-gcc-and-makefile/">learn-gcc-and-makefile</a>
           </li>
         
@@ -199,10 +213,6 @@
         
           <li>
             <a href="/2017/02/13/linux-c-multi-thread/">linux-c-multi-thread</a>
-          </li>
-        
-          <li>
-            <a href="/2017/02/09/xxnet-use/">xxnet use</a>
           </li>
         
       </ul>
